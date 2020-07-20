@@ -1,26 +1,26 @@
-# import speech_recognition as sr
-# import azure.cognitiveservices.speech as speechsdk
+import speech_recognition as sr
+import azure.cognitiveservices.speech as speechsdk
 import spacy
 from spacy.matcher import Matcher
 from nlpmethods import *
+
+from nltk.stem.wordnet import WordNetLemmatizer
+from nltk.corpus import twitter_samples, stopwords
+from nltk.tag import pos_tag
+from nltk.tokenize import word_tokenize
+from nltk import FreqDist, classify, NaiveBayesClassifier
+
+import re, string, random
+from sentiments import *
 nlp = spacy.load('en_core_web_sm')
 print("type ctrl c to stop")
-while True:
-   text = (input())
-   matcher = Matcher(nlp.vocab)
-   doc = nlp(text)
-   print("full name", extract_full_name(doc))
-   print("base", give_base(doc))
-   print("subjects", give_subjects(doc))
-   print("direct objects", give_directobj(doc))
-   print("root", give_ROOT(doc))
-   print("noun chunks", give_nounchunks(doc))
-   print("named entities", give_namedentities(doc))
 
+transcript = []
+
+
+
+classifier = g()
    
-   
-
-
 
 
 
@@ -67,3 +67,23 @@ def talk(text):
            if cancellation_details.error_details:
                print("Error details: {}".format(cancellation_details.error_details))
        print("Did you update the subscription info?")
+       
+       
+       
+       
+       
+print("Hello! I'm SARA")
+while True:
+   text = (listen())
+   transcript.append(text)
+   matcher = Matcher(nlp.vocab)
+   doc = nlp(text)
+#    print(sanalysis(text, classifier))
+#    print("full name", extract_full_name(doc))
+#    print("base", give_base(doc))
+#    print("subjects", give_subjects(doc))
+#    print("direct objects", give_directobj(doc))
+#    print("root", give_ROOT(doc))
+#    print("noun chunks", give_nounchunks(doc))
+#    print("named entities", give_namedentities(doc))
+   talk(respond(text, transcript, sanalysis(text, classifier)))
