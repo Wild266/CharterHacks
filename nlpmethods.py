@@ -2,9 +2,11 @@ import spacy
 from spacy.matcher import Matcher
 nlp = spacy.load('en_core_web_sm')
 matcher = Matcher(nlp.vocab)
+#spaCey
 
 MY_FNAME = "SARA"
 MY_LNAME = "SARA"
+#name: SARA
 
 def respond(text, transcript, sentiment):
    text = text.lower()
@@ -31,10 +33,12 @@ def respond(text, transcript, sentiment):
       return f"Tell me more about {directobjs[0]}"
    if text == "yes":
       return "Great! I can't wait"
+         #positive response
    if text == "no":
       return "why not?"
    if "your name" in text or "SARA" in text:
          return "My name is SARA"
+            #response to question of name
 
    
    if nlp("do") in roots:
