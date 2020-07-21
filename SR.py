@@ -25,7 +25,7 @@ classifier = g()
 
 
 
-
+#converts speech to text
 def listen():
    r = sr.Recognizer()
    mic = sr.Microphone(device_index=0)
@@ -49,6 +49,7 @@ def listen():
 # ttsWatson = TtsWatson('watson_user', 'watson_password', 'en-US_AllisonVoice') 
 # ttsWatson.play(text)
 
+#converts response to speech
 def talk(text):
    speech_key, service_region = "", "eastus"
    speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
@@ -71,7 +72,7 @@ def talk(text):
        
        
        
-       
+#main chatbot loop       
 print("Hello! I'm SARA")
 while True:
    text = (listen())
